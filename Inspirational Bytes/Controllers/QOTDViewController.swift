@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate {
     
     let backgroundImageDownloadQueue = DispatchQueue(label: "com.vt.quote_download_queue")
     

@@ -155,6 +155,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="kZ4-JR-CzS" id="guQ-eE-RdP"/>
+                                </connections>
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hy1-ok-JbH"/>
