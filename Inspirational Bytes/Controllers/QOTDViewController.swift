@@ -21,9 +21,9 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var getQuoteButton: UIButton!
     
-    var savedQuotes: SavedQuotes!
+    var savedQuotes: SavedQuotes?
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
-    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>!
+    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
     
     func setupFetchedResultsController() {
         
@@ -32,9 +32,9 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        fetchedResultsController?.delegate = self
         do {
-            try fetchedResultsController.performFetch()
+            try fetchedResultsController?.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }

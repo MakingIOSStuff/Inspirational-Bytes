@@ -26,8 +26,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     var author: String = ""
     var fromFavorites: Bool = false
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
-    var savedQuotes: SavedQuotes!
-    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>!
+    var savedQuotes: SavedQuotes?
+    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
     
     func setupFetchedResultsController() {
         
@@ -36,9 +36,9 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        fetchedResultsController?.delegate = self
         do {
-            try fetchedResultsController.performFetch()
+            try fetchedResultsController?.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -53,7 +53,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if fromFavorites {
+        if fromFavorites == true {
             QuoteLabel.text = favQuoteText
             AuthorLabel.text = author
             favButton.isEnabled = false
@@ -95,6 +95,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     @IBAction func NewQuoteButton(_ sender: Any) {
         activityIndicator.startAnimating()
         setSavedQuote()
+        favButton.isEnabled = true
     }
 
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -122,6 +123,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     @IBAction func saveToFav(_ sender: UIButton) {
         try? dataController.viewContext.save()
         debugPrint("Saving items to savedquotes")
+        favButton.isEnabled = false
     }
     
     @IBAction func shareButton(_ sender: UIButton) {

@@ -15,8 +15,8 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
     var author: String = ""
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     private var fromFavorites: Bool = false
-    var savedQuotes: SavedQuotes!
-    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>!
+    var savedQuotes: SavedQuotes?
+    var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
     
     func setupFetchedResultsController() {
         
@@ -25,9 +25,9 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        fetchedResultsController?.delegate = self
         do {
-            try fetchedResultsController.performFetch()
+            try fetchedResultsController?.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -41,27 +41,42 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         setupFetchedResultsController()
-        debugPrint("fetch returned: \(String(describing: fetchedResultsController.fetchedObjects?.count)) objects")
+        debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects?.count)) objects")
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return fetchedResultsController?.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")!
-        let currentQuote = fetchedResultsController.fetchedObjects?[indexPath.row]
-        cell.textLabel?.text = currentQuote?.quoteText
-        cell.detailTextLabel?.text = currentQuote?.authorName
-        return cell
+        if fetchedResultsController?.fetchedObjects?.isEmpty == false {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")
+            let currentQuote = fetchedResultsController?.fetchedObjects?[indexPath.row]
+            cell?.textLabel?.text = currentQuote?.quoteText
+            cell?.detailTextLabel?.text = currentQuote?.authorName
+            return cell
+        } else {
+            return
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        favQuoteText = "\(savedQuotes.quoteText ?? "")"
-        author = "\(savedQuotes.authorName ?? "")"
+        let currentQuote = fetchedResultsController?.fetchedObjects?[indexPath.row]
+        favQuoteText = currentQuote?.quoteText ?? ""
+        author = currentQuote?.authorName ?? ""
         performSegue(withIdentifier: "SavedQuotesSegue", sender: AnyObject?.self)
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let quoteToDelete = (fetchedResultsController?.object(at: indexPath))! as NSManagedObject
+            dataController.viewContext.delete(quoteToDelete)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+        try? dataController.viewContext.save()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,7 +84,7 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
             if let destinationVC = (segue.destination as? QuoteViewController) {
                 destinationVC.favQuoteText = favQuoteText
                 destinationVC.author = author
-                fromFavorites = true
+                destinationVC.fromFavorites = true
             }
         }
     }

@@ -33,7 +33,6 @@ class DataController {
         persistentContainer.loadPersistentStores { storeDescription, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
-//                return
             }
             self.configureContexts()
             completion?()
