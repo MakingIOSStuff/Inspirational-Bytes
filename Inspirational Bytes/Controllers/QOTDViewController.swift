@@ -42,6 +42,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     override func viewDidLoad() {
+        setupFetchedResultsController()
         favButton.isEnabled = true
         shareButton.isEnabled = true
         activityIndicator.startAnimating()
