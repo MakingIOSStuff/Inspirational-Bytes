@@ -82,44 +82,17 @@
             </objects>
             <point key="canvasLocation" x="260.74766355140184" y="605.83153347732184"/>
         </scene>
-        <!--QOTDViewController-->
-        <scene sceneID="z3L-jb-wSX">
+        <!--QOTD View Controller-->
+        <scene sceneID="ZSZ-5C-Jwo">
             <objects>
-                <viewController title="QOTDViewController" id="kZ4-JR-CzS" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleAspectFill" id="sb7-5N-2Q1">
+                <viewController id="Hdi-G1-t4O" userLabel="QOTD View Controller" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="efJ-QF-pN2">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2forquotes" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-wV-ic4">
                                 <rect key="frame" x="0.0" y="44" width="428" height="882"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
-                                <rect key="frame" x="20" y="632" width="388" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Dbo-Hg-pIP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrI-Wv-K3o" userLabel="QOTDLabel">
-                                <rect key="frame" x="20" y="159" width="388" height="465"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssn-A4-kk8">
-                                <rect key="frame" x="20" y="765" width="388" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="tL3-WL-7fQ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quotes"/>
-                                <connections>
-                                    <action selector="GetQuotesButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="Ecu-h8-5kD"/>
-                                    <segue destination="rCL-Yq-dc4" kind="presentation" identifier="QOTDSegue" modalPresentationStyle="fullScreen" id="Clv-eI-eho"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Quote Of The Day" textAlignment="center" minimumFontSize="17" id="UME-P5-Y15">
                                 <rect key="frame" x="0.0" y="88" width="428" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -130,8 +103,58 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="QrI-Wv-K3o" userLabel="QOTDLabel">
+                                <rect key="frame" x="20" y="154" width="388" height="465"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleAspectFill" id="Aot-dt-ofN">
+                                <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="5bQ-kT-M8M">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="sYZ-vs-1Vq">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6mw-LL-YnK">
+                                                <rect key="frame" x="20" y="5" width="95" height="34.333333333333336"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="saveToFav:" destination="Hdi-G1-t4O" eventType="touchUpInside" id="7iQ-d8-vAZ"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="jhC-Zv-Wh3">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZBG-f3-07B">
+                                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                                <connections>
+                                                    <action selector="shareButton:" destination="Hdi-G1-t4O" eventType="touchUpInside" id="UAG-5D-amj"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ssn-A4-kk8">
+                                <rect key="frame" x="33" y="771" width="362" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="tL3-WL-7fQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quotes"/>
+                                <connections>
+                                    <action selector="GetQuotesButton:" destination="Hdi-G1-t4O" eventType="touchUpInside" id="s1h-U4-Ssm"/>
+                                    <segue destination="rCL-Yq-dc4" kind="presentation" identifier="QOTDSegue" modalPresentationStyle="fullScreen" id="Clv-eI-eho"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspirational quotes provided by ZenQuotes API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-Y1-ON6" userLabel="ZenQuoteLabel">
-                                <rect key="frame" x="20" y="730" width="388" height="27"/>
+                                <rect key="frame" x="33" y="736" width="362" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="0LE-Ut-5g0"/>
                                 </constraints>
@@ -145,87 +168,55 @@
                                     <constraint firstAttribute="height" constant="20" id="gJI-a2-GCL"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <navigationBar contentMode="scaleAspectFill" id="Aot-dt-ofN">
-                                <rect key="frame" x="0.0" y="44" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="5bQ-kT-M8M">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="sYZ-vs-1Vq">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6mw-LL-YnK">
-                                                <rect key="frame" x="20" y="5" width="95" height="34.333333333333336"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system"/>
-                                                <connections>
-                                                    <action selector="saveToFav:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="Esm-dQ-JIw"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="jhC-Zv-Wh3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZBG-f3-07B">
-                                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
-                                                <connections>
-                                                    <action selector="shareButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="b2g-n8-RLf"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="kZ4-JR-CzS" id="guQ-eE-RdP"/>
-                                </connections>
-                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
+                                <rect key="frame" x="33" y="658" width="362" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Dbo-Hg-pIP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Hy1-ok-JbH"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1qE-Qa-3l6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="2UB-Kc-JVW"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="trailing" secondItem="UME-P5-Y15" secondAttribute="trailing" id="46N-uD-8CN"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="top" secondItem="Hy1-ok-JbH" secondAttribute="top" constant="-44" id="4DX-Vs-lrV"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="28" id="4Xy-n9-KxH"/>
-                            <constraint firstItem="UME-P5-Y15" firstAttribute="top" secondItem="lwj-wV-ic4" secondAttribute="top" constant="44" id="DDN-ML-v3O"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="E2S-xU-30o"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="leading" secondItem="Hy1-ok-JbH" secondAttribute="leading" constant="204" id="HzV-Ju-55Q"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="lwj-wV-ic4" secondAttribute="bottom" constant="-83" id="K6D-GP-0c8"/>
-                            <constraint firstItem="Aot-dt-ofN" firstAttribute="trailing" secondItem="UME-P5-Y15" secondAttribute="trailing" id="WCc-CD-77c"/>
-                            <constraint firstItem="Hy1-ok-JbH" firstAttribute="bottom" secondItem="ssn-A4-kk8" secondAttribute="bottom" constant="25" id="Y4Q-Ag-CDg"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="leading" secondItem="sb7-5N-2Q1" secondAttribute="leadingMargin" id="YWm-p6-ixO"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="trailing" secondItem="ssn-A4-kk8" secondAttribute="trailing" id="Z5b-iC-QAP"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="sb7-5N-2Q1" secondAttribute="centerY" id="aoq-Cn-5x0"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="leading" secondItem="FL4-IM-yAt" secondAttribute="leading" id="b5F-zY-Cn0"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="bottom" constant="71" id="b5I-Z5-NP7"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="trailing" secondItem="FL4-IM-yAt" secondAttribute="trailing" id="bet-ha-B0N"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="trailing" secondItem="sb7-5N-2Q1" secondAttribute="trailingMargin" id="doy-sR-L1o"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="leading" secondItem="UME-P5-Y15" secondAttribute="leading" id="gXR-Qn-LG0"/>
-                            <constraint firstItem="Aot-dt-ofN" firstAttribute="top" secondItem="lwj-wV-ic4" secondAttribute="top" id="jRo-UB-SDK"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="top" secondItem="QrI-Wv-K3o" secondAttribute="bottom" constant="8" id="pSO-Jh-x3a"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="bottom" constant="-44" id="qNV-cj-JVo"/>
-                            <constraint firstItem="UME-P5-Y15" firstAttribute="centerX" secondItem="fNV-97-muC" secondAttribute="centerX" id="r3V-4n-e51"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" secondItem="eD7-Y1-ON6" secondAttribute="leading" id="sEP-bU-hum"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="u8A-ue-6QZ"/>
-                            <constraint firstItem="Aot-dt-ofN" firstAttribute="leading" secondItem="UME-P5-Y15" secondAttribute="leading" id="xZP-hD-vIQ"/>
-                            <constraint firstItem="UME-P5-Y15" firstAttribute="leading" secondItem="Hy1-ok-JbH" secondAttribute="leading" id="yDm-zn-T1d"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="leading" secondItem="ssn-A4-kk8" secondAttribute="leading" id="z4E-YH-jUa"/>
+                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="0Ht-zH-NgD"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" secondItem="eD7-Y1-ON6" secondAttribute="leading" id="1Xk-DU-QhB"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="3v4-Cf-SEZ"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="Aot-dt-ofN" secondAttribute="centerX" id="9fX-o8-nsS"/>
+                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="trailing" secondItem="efJ-QF-pN2" secondAttribute="trailingMargin" constant="-20" id="Fn1-XU-BSM"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="8" id="H9B-jP-JcF"/>
+                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="baseline" secondItem="FL4-IM-yAt" secondAttribute="firstBaseline" constant="-81" id="HUt-xd-Kmv"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="I8k-Zz-Iu9"/>
+                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="bottom" constant="90" id="Shr-7c-T1T"/>
+                            <constraint firstItem="lwj-wV-ic4" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="top" id="XLM-BR-nRq"/>
+                            <constraint firstItem="1qE-Qa-3l6" firstAttribute="bottom" secondItem="ssn-A4-kk8" secondAttribute="bottom" constant="19" id="cKi-nw-qQc"/>
+                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="leading" secondItem="efJ-QF-pN2" secondAttribute="leadingMargin" constant="-20" id="f4Q-Hh-oRE"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" constant="204" id="hwq-J9-jrf"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lwj-wV-ic4" secondAttribute="bottom" constant="-83" id="jJF-Wq-CG3"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="leading" secondItem="ssn-A4-kk8" secondAttribute="leading" id="lP4-fX-Msb"/>
+                            <constraint firstItem="lwj-wV-ic4" firstAttribute="leading" secondItem="Aot-dt-ofN" secondAttribute="leading" id="pGS-AP-Av6"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="trailing" secondItem="ssn-A4-kk8" secondAttribute="trailing" id="qjR-94-ykx"/>
+                            <constraint firstItem="lwj-wV-ic4" firstAttribute="trailing" secondItem="Aot-dt-ofN" secondAttribute="trailing" id="tvU-4s-pEd"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="efJ-QF-pN2" secondAttribute="centerY" id="wfi-Fj-mge"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" image="text.bubble.fill" catalog="system" selectedImage="text.bubble.fill" id="16x-el-ZNw"/>
+                    <tabBarItem key="tabBarItem" image="text.bubble.fill" catalog="system" selectedImage="text.bubble.fill" id="4wg-NM-6uc"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="QOTDAuthorLabel" destination="FL4-IM-yAt" id="keH-6m-nSG"/>
-                        <outlet property="QOTDLabel" destination="QrI-Wv-K3o" id="EVM-CD-nrV"/>
-                        <outlet property="activityIndicator" destination="fNV-97-muC" id="haK-io-KRY"/>
-                        <outlet property="favButton" destination="sYZ-vs-1Vq" id="yb9-bO-6hJ"/>
-                        <outlet property="getQuoteButton" destination="ssn-A4-kk8" id="RE2-rP-TcG"/>
-                        <outlet property="imageView" destination="lwj-wV-ic4" id="g3b-om-yBE"/>
-                        <outlet property="shareButton" destination="jhC-Zv-Wh3" id="tZH-mp-D7I"/>
-                        <outlet property="view" destination="sb7-5N-2Q1" id="TZc-Az-cUb"/>
+                        <outlet property="QOTDAuthorLabel" destination="FL4-IM-yAt" id="W3r-2f-SdU"/>
+                        <outlet property="QOTDLabel" destination="QrI-Wv-K3o" id="RVo-7h-ub0"/>
+                        <outlet property="activityIndicator" destination="fNV-97-muC" id="mFF-fk-X8K"/>
+                        <outlet property="favButton" destination="sYZ-vs-1Vq" id="L5I-ej-xjE"/>
+                        <outlet property="getQuoteButton" destination="ssn-A4-kk8" id="WgM-JT-J5n"/>
+                        <outlet property="imageView" destination="lwj-wV-ic4" id="lxZ-if-Ycg"/>
+                        <outlet property="shareButton" destination="jhC-Zv-Wh3" id="vpB-Vx-AL6"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nr2-Oq-viW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDI-qP-tJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260.74766355140184" y="-66.090712742980571"/>
+            <point key="canvasLocation" x="261" y="-72"/>
         </scene>
         <!--TabVC-->
         <scene sceneID="Abg-dL-R3l">
@@ -238,7 +229,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kZ4-JR-CzS" kind="relationship" relationship="viewControllers" id="dT2-w7-F2I"/>
+                        <segue destination="Hdi-G1-t4O" kind="relationship" relationship="viewControllers" id="Iay-s2-x2h"/>
                         <segue destination="gVC-lt-mu6" kind="relationship" relationship="viewControllers" id="9jL-is-oMt"/>
                     </connections>
                 </tabBarController>
