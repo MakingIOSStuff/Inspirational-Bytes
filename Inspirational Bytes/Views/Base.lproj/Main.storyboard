@@ -11,11 +11,14 @@
         <!--Navigation Controller-->
         <scene sceneID="3ut-Wr-L0F">
             <objects>
-                <navigationController id="D14-ov-V4k" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="D14-ov-V4k" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="606-Pq-OqL">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Hc-Ge-vxY">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="77p-sR-sdp" kind="relationship" relationship="rootViewController" id="kcn-iH-kHf"/>
                     </connections>
@@ -95,14 +98,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Quote Of The Day" textAlignment="center" minimumFontSize="17" id="UME-P5-Y15">
-                                <rect key="frame" x="0.0" y="88" width="428" height="104"/>
+                                <rect key="frame" x="0.0" y="115" width="428" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="QrI-Wv-K3o" userLabel="QOTDLabel">
-                                <rect key="frame" x="20" y="154" width="388" height="465"/>
+                                <rect key="frame" x="20" y="200" width="388" height="465"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
                                 <nil key="textColor"/>
@@ -121,26 +124,26 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspirational quotes provided by ZenQuotes API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-Y1-ON6" userLabel="ZenQuoteLabel">
                                 <rect key="frame" x="33" y="736" width="362" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="jHP-2t-WA4"/>
+                                    <constraint firstAttribute="height" constant="27" id="qmq-zf-qHU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fNV-97-muC">
-                                <rect key="frame" x="204" y="453" width="37" height="20"/>
+                                <rect key="frame" x="376.66666666666669" y="453" width="37" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="bLq-nE-j9E"/>
+                                    <constraint firstAttribute="height" constant="20" id="T3l-Vx-AaZ"/>
                                 </constraints>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
-                                <rect key="frame" x="50" y="658" width="345" height="70"/>
+                                <rect key="frame" x="395" y="704" width="0.0" height="24"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleAspectFill" id="Aot-dt-ofN">
-                                <rect key="frame" x="0.0" y="33" width="428" height="44"/>
+                                <rect key="frame" x="0.0" y="71" width="428" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <items>
                                     <navigationItem id="5bQ-kT-M8M">
@@ -173,16 +176,14 @@
                         <viewLayoutGuide key="safeArea" id="1qE-Qa-3l6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="0bi-QH-2u0"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="top" secondItem="QrI-Wv-K3o" secondAttribute="bottom" constant="39" id="1ej-sf-a2I"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" constant="204" id="8V8-ZV-u16"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eD7-Y1-ON6" secondAttribute="leading" id="QuN-3N-0zb"/>
-                            <constraint firstItem="Aot-dt-ofN" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" id="VJF-K5-spX"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="W3p-M8-nbo"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="8" id="XCM-pk-c9H"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="trailing" secondItem="ssn-A4-kk8" secondAttribute="trailing" id="c2I-z9-X0P"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="hgQ-u6-BfC"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="efJ-QF-pN2" secondAttribute="centerY" id="xYy-Bi-dj9"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1qE-Qa-3l6" secondAttribute="leading" id="JXY-gE-hIP"/>
+                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="PJA-oo-Cfp"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="leading" secondItem="ssn-A4-kk8" secondAttribute="leading" id="hP1-Ud-pmi"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="iM1-da-DPw"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="8" id="mkn-lI-6D1"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="top" secondItem="QrI-Wv-K3o" secondAttribute="bottom" constant="39" id="o3I-VH-dm5"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="efJ-QF-pN2" secondAttribute="centerY" id="pGi-PC-2k4"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="qYA-3l-ja3"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" image="text.bubble.fill" catalog="system" selectedImage="text.bubble.fill" id="4wg-NM-6uc"/>
@@ -204,7 +205,7 @@
         <!--TabVC-->
         <scene sceneID="Abg-dL-R3l">
             <objects>
-                <tabBarController id="77p-sR-sdp" customClass="TabVC" sceneMemberID="viewController">
+                <tabBarController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="77p-sR-sdp" customClass="TabVC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8um-22-3eV"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b8e-IX-fus">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -260,7 +261,7 @@
                                         <nil key="title"/>
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="2ah-t5-CRs">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" id="MHz-EN-cw3">
-                                                <rect key="frame" x="20" y="0.0" width="189.66666666666666" height="44"/>
+                                                <rect key="frame" x="20" y="0.0" width="164.66666666666666" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="icon_back-arrow" title="Back">
