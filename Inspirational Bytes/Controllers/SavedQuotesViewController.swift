@@ -72,6 +72,7 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.beginUpdates()
             let quoteToDelete = (fetchedResultsController?.object(at: indexPath))! as NSManagedObject
             dataController.viewContext.delete(quoteToDelete)
+            setupFetchedResultsController()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }

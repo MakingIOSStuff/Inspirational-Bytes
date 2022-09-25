@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="260.74766355140184" y="605.83153347732184"/>
         </scene>
-        <!--View Controller-->
+        <!--QOTDViewController-->
         <scene sceneID="z3L-jb-wSX">
             <objects>
-                <viewController id="kZ4-JR-CzS" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="QOTDViewController" id="kZ4-JR-CzS" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFill" id="sb7-5N-2Q1">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,41 +84,13 @@
                                 <rect key="frame" x="0.0" y="88" width="428" height="838"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aw-Nu-ssb">
-                                <rect key="frame" x="0.0" y="44" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="oeG-R2-Ul6">
-                                        <rightBarButtonItems>
-                                            <barButtonItem style="plain" id="xQm-WA-Etz">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hlr-cT-ukz">
-                                                    <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="shareButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="kxV-iq-TQM"/>
-                                                    </connections>
-                                                </button>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="boW-lc-KRk">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Aec-ps-DAk">
-                                                    <rect key="frame" x="210" y="5" width="95" height="34.333333333333336"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="saveToFavButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="KeE-FI-sa1"/>
-                                                    </connections>
-                                                </button>
-                                                <connections>
-                                                    <action selector="saveToFavButton:" destination="kZ4-JR-CzS" id="CDK-Ld-alY"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
+                                <rect key="frame" x="20" y="632" width="388" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrI-Wv-K3o" userLabel="QOTDLabel">
                                 <rect key="frame" x="20" y="159" width="388" height="465"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -154,13 +126,15 @@
                                 <rect key="frame" x="204" y="453" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
-                                <rect key="frame" x="20" y="632" width="388" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLo-vB-JrS">
+                                <rect key="frame" x="322" y="42" width="45" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                <connections>
+                                    <action selector="shareButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="rzO-xy-Od3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hy1-ok-JbH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,10 +144,9 @@
                         <outlet property="QOTDAuthorLabel" destination="FL4-IM-yAt" id="keH-6m-nSG"/>
                         <outlet property="QOTDLabel" destination="QrI-Wv-K3o" id="EVM-CD-nrV"/>
                         <outlet property="activityIndicator" destination="fNV-97-muC" id="haK-io-KRY"/>
-                        <outlet property="favButton" destination="boW-lc-KRk" id="70b-np-xmS"/>
                         <outlet property="getQuoteButton" destination="ssn-A4-kk8" id="RE2-rP-TcG"/>
                         <outlet property="imageView" destination="lwj-wV-ic4" id="g3b-om-yBE"/>
-                        <outlet property="shareButton" destination="xQm-WA-Etz" id="56C-8G-1nD"/>
+                        <outlet property="shareButton" destination="VLo-vB-JrS" id="a7U-8S-Mdq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr2-Oq-viW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
