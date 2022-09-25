@@ -51,7 +51,6 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     func setQOTD () {
         NetworkManager.getQOTD() { quoteResponse, error in
-            debugPrint("\(String(describing: quoteResponse)) was returned")
             if let quoteResponse = quoteResponse {
                 let responseText = quoteResponse[0]
                 self.QOTDLabel.text = "\"\(responseText.text)\""
@@ -83,7 +82,6 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         quoteForSave.quoteText = favQuote.quoteText
         quoteForSave.authorName = favQuote.authorName
         try? dataController.viewContext.save()
-        debugPrint("Saving items to savedquotes")
         favButton.isEnabled = false
     }
     

@@ -68,7 +68,6 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     
     func setSavedQuote() {
         if randomQuotes.isEmpty == true {
-            debugPrint("Did not find stored quotes. Sending for more.")
             NetworkManager.getQuotes { quoteResponse, error in
                 if let quoteResponse = quoteResponse {
                     self.randomQuotes.append(contentsOf: quoteResponse)
@@ -82,7 +81,6 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     }
                 }
         } else {
-            debugPrint("Found \(randomQuotes.count) quotes stored. Get Random Quote")
             let index = Int.random(in: 0...(randomQuotes.count - 1))
             let currentQuote = randomQuotes[index]
             QuoteLabel.text = "\"\(currentQuote.text)\""
@@ -127,7 +125,6 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
         quoteForSave.quoteText = favQuote.quoteText
         quoteForSave.authorName = favQuote.authorName
         try? dataController.viewContext.save()
-        debugPrint("Saving items to savedquotes")
         favButton.isEnabled = false
     }
     

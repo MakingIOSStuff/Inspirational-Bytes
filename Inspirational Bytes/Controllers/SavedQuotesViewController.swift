@@ -41,7 +41,6 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         setupFetchedResultsController()
-        debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects?.count)) objects")
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
