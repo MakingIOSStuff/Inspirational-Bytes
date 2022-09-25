@@ -17,8 +17,8 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var QOTDLabel: UILabel!
     @IBOutlet weak var QOTDAuthorLabel: UILabel!
-    @IBOutlet weak var shareButton: UIButton!
-    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var getQuoteButton: UIButton!
     
     var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
@@ -42,6 +42,8 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     override func viewDidLoad() {
+        favButton.isEnabled = true
+        shareButton.isEnabled = true
         activityIndicator.startAnimating()
         super.viewDidLoad()
         setQOTD()
@@ -62,15 +64,15 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func createShareQuote() -> UIImage {
-        favButton.isHidden = true
-        shareButton.isHidden = true
+        favButton.customView?.isHidden = true
+        shareButton.customView?.isHidden = true
         getQuoteButton.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let shareQuote: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        shareButton.isHidden = false
-        favButton.isHidden = false
+        shareButton.customView?.isHidden = false
+        favButton.customView?.isHidden = false
         getQuoteButton.isHidden = false
         
         return shareQuote
