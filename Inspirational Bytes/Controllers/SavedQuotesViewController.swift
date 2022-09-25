@@ -54,8 +54,8 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")!
         if fetchedResultsController?.fetchedObjects?.isEmpty == false {
             let currentQuote = fetchedResultsController?.fetchedObjects?[indexPath.row]
-            cell.textLabel?.text = "\"\(currentQuote?.quoteText ?? "")\""
-            cell.detailTextLabel?.text = "\"\(currentQuote?.authorName ?? "")\""
+            cell.textLabel?.text = currentQuote?.quoteText ?? ""
+            cell.detailTextLabel?.text = currentQuote?.authorName ?? ""
             }
         return cell
     }
@@ -77,7 +77,6 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.endUpdates()
         }
         tableView.reloadData()
-        try? dataController.viewContext.save()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

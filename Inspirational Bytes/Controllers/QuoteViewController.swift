@@ -24,6 +24,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     var randomQuotes = [QuoteResponse]()
     var favQuoteText: String = ""
     var author: String = ""
+    var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
     var fromFavorites: Bool = false
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var savedQuotes: SavedQuotes?
@@ -65,7 +66,6 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     }
     
     func setSavedQuote() {
-        let favQuote = SavedQuotes(context: dataController.viewContext)
         if randomQuotes.isEmpty == true {
             debugPrint("Did not find stored quotes. Sending for more.")
             NetworkManager.getQuotes { quoteResponse, error in
@@ -75,8 +75,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     let currentQuote = quoteResponse[index]
                     self.QuoteLabel.text = "\"\(currentQuote.text)\""
                     self.AuthorLabel.text = "-\(currentQuote.author)"
-                    favQuote.quoteText = "\"\(currentQuote.text)\""
-                    favQuote.authorName = "-\(currentQuote.author)"
+                    self.favQuote.quoteText = "\"\(currentQuote.text)\""
+                    self.favQuote.authorName = "-\(currentQuote.author)"
                     self.activityIndicator.stopAnimating()
                     }
                 }
@@ -121,6 +121,9 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     }
     
     @IBAction func saveToFav(_ sender: UIButton) {
+        let quoteForSave = SavedQuotes(context: dataController.viewContext)
+        quoteForSave.quoteText = favQuote.quoteText
+        quoteForSave.authorName = favQuote.authorName
         try? dataController.viewContext.save()
         debugPrint("Saving items to savedquotes")
         favButton.isEnabled = false
