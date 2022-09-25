@@ -88,6 +88,10 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     @IBAction func shareButton(_ sender: UIButton) {
         let shareQuote = createShareQuote()
         let controller = UIActivityViewController(activityItems: [shareQuote], applicationActivities: nil)
+        if UITraitCollection.current.userInterfaceIdiom == .pad {
+            controller.modalPresentationStyle = .popover
+            controller.popoverPresentationController?.sourceView = sender
+        }
         present(controller, animated: true, completion: nil)
     }
     
