@@ -102,7 +102,7 @@
                                 <rect key="frame" x="20" y="765" width="388" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quote"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quotes"/>
                                 <connections>
                                     <action selector="GetQuotesButton:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="Ecu-h8-5kD"/>
                                     <segue destination="rCL-Yq-dc4" kind="presentation" identifier="QOTDSegue" modalPresentationStyle="fullScreen" id="Clv-eI-eho"/>
