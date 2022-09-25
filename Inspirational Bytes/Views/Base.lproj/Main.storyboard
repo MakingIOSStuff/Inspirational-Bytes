@@ -27,7 +27,7 @@
         <!--Saved Quotes View Controller-->
         <scene sceneID="8bd-rd-Llv">
             <objects>
-                <viewController id="gVC-lt-mu6" customClass="SavedQuotesViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gVC-lt-mu6" customClass="SavedQuotesViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBX-bh-K4V">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,20 +85,18 @@
         <!--QOTD View Controller-->
         <scene sceneID="ZSZ-5C-Jwo">
             <objects>
-                <viewController id="Hdi-G1-t4O" userLabel="QOTD View Controller" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Hdi-G1-t4O" userLabel="QOTD View Controller" customClass="QOTDViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="efJ-QF-pN2">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2forquotes" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-wV-ic4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2forquotes" id="lwj-wV-ic4">
                                 <rect key="frame" x="0.0" y="44" width="428" height="882"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Quote Of The Day" textAlignment="center" minimumFontSize="17" id="UME-P5-Y15">
                                 <rect key="frame" x="0.0" y="88" width="428" height="104"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="104" id="fYn-Fs-TMw"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -110,9 +108,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ssn-A4-kk8">
+                                <rect key="frame" x="33" y="771" width="362" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quotes"/>
+                                <connections>
+                                    <action selector="GetQuotesButton:" destination="Hdi-G1-t4O" eventType="touchUpInside" id="s1h-U4-Ssm"/>
+                                    <segue destination="rCL-Yq-dc4" kind="presentation" identifier="QOTDSegue" modalPresentationStyle="fullScreen" id="Clv-eI-eho"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspirational quotes provided by ZenQuotes API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-Y1-ON6" userLabel="ZenQuoteLabel">
+                                <rect key="frame" x="33" y="736" width="362" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="jHP-2t-WA4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fNV-97-muC">
+                                <rect key="frame" x="204" y="453" width="37" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="bLq-nE-j9E"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
+                                <rect key="frame" x="50" y="658" width="345" height="70"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <navigationBar contentMode="scaleAspectFill" id="Aot-dt-ofN">
-                                <rect key="frame" x="0.0" y="44" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="33" width="428" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <items>
                                     <navigationItem id="5bQ-kT-M8M">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="sYZ-vs-1Vq">
@@ -140,66 +169,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ssn-A4-kk8">
-                                <rect key="frame" x="33" y="771" width="362" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="tL3-WL-7fQ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Get Random Quotes"/>
-                                <connections>
-                                    <action selector="GetQuotesButton:" destination="Hdi-G1-t4O" eventType="touchUpInside" id="s1h-U4-Ssm"/>
-                                    <segue destination="rCL-Yq-dc4" kind="presentation" identifier="QOTDSegue" modalPresentationStyle="fullScreen" id="Clv-eI-eho"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspirational quotes provided by ZenQuotes API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-Y1-ON6" userLabel="ZenQuoteLabel">
-                                <rect key="frame" x="33" y="736" width="362" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="0LE-Ut-5g0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fNV-97-muC">
-                                <rect key="frame" x="204" y="453" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="gJI-a2-GCL"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FL4-IM-yAt" userLabel="QOTDAuthorLabel">
-                                <rect key="frame" x="33" y="658" width="362" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Dbo-Hg-pIP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1qE-Qa-3l6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="0Ht-zH-NgD"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" secondItem="eD7-Y1-ON6" secondAttribute="leading" id="1Xk-DU-QhB"/>
-                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="3v4-Cf-SEZ"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="Aot-dt-ofN" secondAttribute="centerX" id="9fX-o8-nsS"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="trailing" secondItem="efJ-QF-pN2" secondAttribute="trailingMargin" constant="-20" id="Fn1-XU-BSM"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="8" id="H9B-jP-JcF"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="baseline" secondItem="FL4-IM-yAt" secondAttribute="firstBaseline" constant="-81" id="HUt-xd-Kmv"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="I8k-Zz-Iu9"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="bottom" constant="90" id="Shr-7c-T1T"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="top" secondItem="Aot-dt-ofN" secondAttribute="top" id="XLM-BR-nRq"/>
-                            <constraint firstItem="1qE-Qa-3l6" firstAttribute="bottom" secondItem="ssn-A4-kk8" secondAttribute="bottom" constant="19" id="cKi-nw-qQc"/>
-                            <constraint firstItem="QrI-Wv-K3o" firstAttribute="leading" secondItem="efJ-QF-pN2" secondAttribute="leadingMargin" constant="-20" id="f4Q-Hh-oRE"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" constant="204" id="hwq-J9-jrf"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="lwj-wV-ic4" secondAttribute="bottom" constant="-83" id="jJF-Wq-CG3"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="leading" secondItem="ssn-A4-kk8" secondAttribute="leading" id="lP4-fX-Msb"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="leading" secondItem="Aot-dt-ofN" secondAttribute="leading" id="pGS-AP-Av6"/>
-                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="trailing" secondItem="ssn-A4-kk8" secondAttribute="trailing" id="qjR-94-ykx"/>
-                            <constraint firstItem="lwj-wV-ic4" firstAttribute="trailing" secondItem="Aot-dt-ofN" secondAttribute="trailing" id="tvU-4s-pEd"/>
-                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="efJ-QF-pN2" secondAttribute="centerY" id="wfi-Fj-mge"/>
+                            <constraint firstItem="ssn-A4-kk8" firstAttribute="top" secondItem="eD7-Y1-ON6" secondAttribute="bottom" constant="8" id="0bi-QH-2u0"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="top" secondItem="QrI-Wv-K3o" secondAttribute="bottom" constant="39" id="1ej-sf-a2I"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" constant="204" id="8V8-ZV-u16"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eD7-Y1-ON6" secondAttribute="leading" id="QuN-3N-0zb"/>
+                            <constraint firstItem="Aot-dt-ofN" firstAttribute="leading" secondItem="1qE-Qa-3l6" secondAttribute="leading" id="VJF-K5-spX"/>
+                            <constraint firstItem="FL4-IM-yAt" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eD7-Y1-ON6" secondAttribute="trailing" id="W3p-M8-nbo"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="top" secondItem="FL4-IM-yAt" secondAttribute="bottom" constant="8" id="XCM-pk-c9H"/>
+                            <constraint firstItem="eD7-Y1-ON6" firstAttribute="trailing" secondItem="ssn-A4-kk8" secondAttribute="trailing" id="c2I-z9-X0P"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerX" secondItem="FL4-IM-yAt" secondAttribute="centerX" id="hgQ-u6-BfC"/>
+                            <constraint firstItem="fNV-97-muC" firstAttribute="centerY" secondItem="efJ-QF-pN2" secondAttribute="centerY" id="xYy-Bi-dj9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" image="text.bubble.fill" catalog="system" selectedImage="text.bubble.fill" id="4wg-NM-6uc"/>
@@ -240,7 +223,7 @@
         <!--Quote View Controller-->
         <scene sceneID="BCA-ol-dKp">
             <objects>
-                <viewController id="rCL-Yq-dc4" customClass="QuoteViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="rCL-Yq-dc4" customClass="QuoteViewController" customModule="Inspirational_Bytes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bdF-1o-AlV">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +244,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspirational quotes provided by ZenQuotes API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5K-kd-1tk" userLabel="ZenQuoteLabel">
-                                <rect key="frame" x="20" y="866" width="388" height="27"/>
+                                <rect key="frame" x="20" y="866" width="362" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Dpe-AE-JDq"/>
                                 </constraints>
@@ -323,7 +306,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGW-5m-PyN">
-                                <rect key="frame" x="20" y="813" width="388" height="45"/>
+                                <rect key="frame" x="20" y="813" width="362" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="k7q-fu-1TT"/>
                                 </constraints>
@@ -350,10 +333,10 @@
                             <constraint firstItem="aBf-yg-SWY" firstAttribute="centerX" secondItem="7YU-lq-L8n" secondAttribute="centerX" id="6ge-x9-WHS"/>
                             <constraint firstItem="ZWi-k6-8af" firstAttribute="leading" secondItem="a6e-SG-WZA" secondAttribute="leading" id="6pw-Ng-lk3"/>
                             <constraint firstItem="aBf-yg-SWY" firstAttribute="centerY" secondItem="bdF-1o-AlV" secondAttribute="centerY" id="BDm-Tp-3SX"/>
-                            <constraint firstItem="fP0-Vh-VB8" firstAttribute="leading" secondItem="7YU-lq-L8n" secondAttribute="leading" id="BTC-zi-9HG"/>
+                            <constraint firstItem="fP0-Vh-VB8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7YU-lq-L8n" secondAttribute="leading" id="BTC-zi-9HG"/>
                             <constraint firstItem="ZWi-k6-8af" firstAttribute="trailing" secondItem="a6e-SG-WZA" secondAttribute="trailing" id="Cde-sk-jwj"/>
                             <constraint firstItem="7YU-lq-L8n" firstAttribute="leading" secondItem="UGW-5m-PyN" secondAttribute="leading" id="CoQ-3N-0ba"/>
-                            <constraint firstItem="fP0-Vh-VB8" firstAttribute="trailing" secondItem="7YU-lq-L8n" secondAttribute="trailing" id="DWc-em-6ZS"/>
+                            <constraint firstItem="fP0-Vh-VB8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7YU-lq-L8n" secondAttribute="trailing" id="DWc-em-6ZS"/>
                             <constraint firstItem="UGW-5m-PyN" firstAttribute="trailing" secondItem="f5K-kd-1tk" secondAttribute="trailing" id="HWu-cr-3JL"/>
                             <constraint firstAttribute="bottomMargin" secondItem="f5K-kd-1tk" secondAttribute="bottom" constant="-1" id="Hwt-yx-TSZ"/>
                             <constraint firstItem="f5K-kd-1tk" firstAttribute="top" secondItem="UGW-5m-PyN" secondAttribute="bottom" constant="8" id="NvO-Lo-QCV"/>
@@ -362,7 +345,7 @@
                             <constraint firstItem="fP0-Vh-VB8" firstAttribute="baseline" secondItem="7YU-lq-L8n" secondAttribute="firstBaseline" id="XV7-m7-jAf"/>
                             <constraint firstItem="fP0-Vh-VB8" firstAttribute="leading" secondItem="bdF-1o-AlV" secondAttribute="leadingMargin" id="YGS-23-29c"/>
                             <constraint firstItem="ZWi-k6-8af" firstAttribute="centerX" secondItem="aBf-yg-SWY" secondAttribute="centerX" id="Zca-7g-JYu"/>
-                            <constraint firstItem="7YU-lq-L8n" firstAttribute="trailing" secondItem="UGW-5m-PyN" secondAttribute="trailing" id="fC5-v8-vWb"/>
+                            <constraint firstItem="7YU-lq-L8n" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UGW-5m-PyN" secondAttribute="trailing" id="fC5-v8-vWb"/>
                             <constraint firstItem="ZWi-k6-8af" firstAttribute="top" secondItem="bdF-1o-AlV" secondAttribute="topMargin" id="haA-CA-XrT"/>
                             <constraint firstItem="aBf-yg-SWY" firstAttribute="leading" secondItem="RA3-85-P17" secondAttribute="leading" constant="169" id="iRx-LX-mfh"/>
                             <constraint firstItem="7YU-lq-L8n" firstAttribute="top" secondItem="aBf-yg-SWY" secondAttribute="bottom" constant="38" id="kZ1-lV-K63"/>
