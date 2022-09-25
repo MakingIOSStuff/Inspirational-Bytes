@@ -45,7 +45,7 @@ class NetworkManager {
               do {
                   let responseObject = try decoder.decode(responseType, from: data)
                   DispatchQueue.main.async {
-                      completion(responseObject as? ResponseType, nil)
+                      completion(responseObject, nil)
                   }
               } catch {
                   do {

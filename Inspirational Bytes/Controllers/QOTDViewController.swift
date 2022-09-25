@@ -92,7 +92,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     @IBAction func GetQuotesButton(_ sender: UIButton) {
-        
+        print("Time to get changes")
         }
 }
 
