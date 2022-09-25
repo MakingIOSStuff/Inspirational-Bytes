@@ -126,6 +126,15 @@
                                 <rect key="frame" x="204" y="453" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-4I-rRW">
+                                <rect key="frame" x="47" y="43" width="47" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="saveToFav:" destination="kZ4-JR-CzS" eventType="touchUpInside" id="btO-cn-KZc"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLo-vB-JrS">
                                 <rect key="frame" x="322" y="42" width="45" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -144,9 +153,11 @@
                         <outlet property="QOTDAuthorLabel" destination="FL4-IM-yAt" id="keH-6m-nSG"/>
                         <outlet property="QOTDLabel" destination="QrI-Wv-K3o" id="EVM-CD-nrV"/>
                         <outlet property="activityIndicator" destination="fNV-97-muC" id="haK-io-KRY"/>
+                        <outlet property="favButton" destination="M9A-4I-rRW" id="lUQ-uR-lSg"/>
                         <outlet property="getQuoteButton" destination="ssn-A4-kk8" id="RE2-rP-TcG"/>
                         <outlet property="imageView" destination="lwj-wV-ic4" id="g3b-om-yBE"/>
                         <outlet property="shareButton" destination="VLo-vB-JrS" id="a7U-8S-Mdq"/>
+                        <outlet property="view" destination="sb7-5N-2Q1" id="TZc-Az-cUb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr2-Oq-viW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

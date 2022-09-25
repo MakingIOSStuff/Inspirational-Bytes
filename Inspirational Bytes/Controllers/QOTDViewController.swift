@@ -18,8 +18,10 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var QOTDLabel: UILabel!
     @IBOutlet weak var QOTDAuthorLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var getQuoteButton: UIButton!
     
+    var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
     var savedQuotes: SavedQuotes?
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
@@ -52,12 +54,15 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
                 let responseText = quoteResponse[0]
                 self.QOTDLabel.text = "\"\(responseText.text)\""
                 self.QOTDAuthorLabel.text = "-\(responseText.author)"
+                self.favQuote.quoteText = "\"\(responseText.text)\""
+                self.favQuote.authorName = "-\(responseText.author)"
             }
             self.activityIndicator.stopAnimating()
         }
     }
     
     func createShareQuote() -> UIImage {
+        favButton.isHidden = true
         shareButton.isHidden = true
         getQuoteButton.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -65,9 +70,19 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let shareQuote: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         shareButton.isHidden = false
+        favButton.isHidden = false
         getQuoteButton.isHidden = false
         
         return shareQuote
+    }
+    
+    @IBAction func saveToFav(_ sender: UIButton) {
+        let quoteForSave = SavedQuotes(context: dataController.viewContext)
+        quoteForSave.quoteText = favQuote.quoteText
+        quoteForSave.authorName = favQuote.authorName
+        try? dataController.viewContext.save()
+        debugPrint("Saving items to savedquotes")
+        favButton.isEnabled = false
     }
     
     @IBAction func shareButton(_ sender: UIButton) {

@@ -77,6 +77,7 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.endUpdates()
         }
         tableView.reloadData()
+        try? dataController.viewContext.save()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

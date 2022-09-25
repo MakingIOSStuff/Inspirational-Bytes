@@ -59,6 +59,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
             AuthorLabel.text = author
             favButton.isEnabled = false
             favButton.customView?.isHidden = true
+            refreshQuoteButton.isHidden = true
             activityIndicator.stopAnimating()
         } else {
             setSavedQuote()
@@ -112,11 +113,12 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let shareQuote: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        if fromFavorites == false {
+            favButton.customView?.isHidden = false
+            refreshQuoteButton.isHidden = false
+        }
         backButton.customView?.isHidden = false
-        favButton.customView?.isHidden = false
         shareButton.customView?.isHidden = false
-        refreshQuoteButton.isHidden = false
-        
         return shareQuote
     }
     
