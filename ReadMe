@@ -1,0 +1,50 @@
+Inspirational_Bytes -Created By Joel Gans
+***
+# What is Inspirational_Bytes?
+Inspirational_Bytes is an app that will allow you (the user) to receive your
+daily dose of inspiration. The app is simple to use and will offer a quick
+way to find inspiration from many sources via an easy to use interface that
+is intuitive and appealing.
+
+# Using the app
+** QOTD
+Using the application is meant to be simple and intuitive. The primary use
+of the app is to get the Quote Of The Day, which is displayed by simply opening
+the application.
+
+** Random Quotes
+If you require extra inspiration you are able to push the "Get Random Quotes"
+button. This button will take you to a second view which will display random
+quotes that have been stored for you. If the provided quote is still not enough
+you are able to cycle through the random quotes using the "Give Me Another"
+button.
+
+** Sharing Quotes
+If you are truly inspired by a quote that you have found you can share the
+quote with others by using the share button in the top right corner of the
+screen. The same function is available on the QOTD view.
+
+** Saving Quotes
+If you want to save a quote to your quote library you can do so by tapping the
+star icon. The quote will be saved to your device and be viewable in your
+personal quote library from the home screen. The same function is available
+on the QOTD view.
+
+** Viewing Saved Quotes
+If you would like to view your saved quotes you can do so by tapping the
+book icon on the bottom bar of the home screen. This will display a list view
+that you can move through to find the quote you are interested in viewing.
+Tapping on the quote will display the entire quote on a large view and make the
+view sharable.
+
+** Deleting Saved Quotes
+If you decide that you no longer want a saved quote in your library you can
+remove the quote by simply swiping the quote to the left in the list view.
+This will delete the quote from your library and updates immediately. This
+function cannot be undone.
+
+***
+
+## All quotes have been provided by ZenQuote API.
+Inspirational quotes provided by <a href="https://zenquotes.io/" target="_
+blank">ZenQuotes API</a>
