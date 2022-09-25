@@ -50,12 +50,12 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let favQuote = SavedQuotes(context: dataController.viewContext)
         NetworkManager.getQOTD() { quoteResponse, error in
             debugPrint("\(String(describing: quoteResponse)) was returned")
-            if error == nil {
-                let responseText = quoteResponse?[0]
-                self.QOTDLabel.text = responseText?.text
-                self.QOTDAuthorLabel.text = responseText?.author
-                favQuote.quoteText = responseText?.text
-                favQuote.authorName = responseText?.author
+            if let quoteResponse = quoteResponse {
+                let responseText = quoteResponse[0]
+                self.QOTDLabel.text = "\"\(responseText.text)\""
+                self.QOTDAuthorLabel.text = "-\(responseText.author)"
+                favQuote.quoteText = responseText.text
+                favQuote.authorName = responseText.author
             }
             self.activityIndicator.stopAnimating()
         }

@@ -73,10 +73,10 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     self.randomQuotes.append(contentsOf: quoteResponse)
                     let index = Int.random(in: 0...(quoteResponse.count - 1))
                     let currentQuote = quoteResponse[index]
-                    self.QuoteLabel.text = currentQuote.text
-                    self.AuthorLabel.text = currentQuote.author
-                    favQuote.quoteText = currentQuote.text
-                    favQuote.authorName = currentQuote.author
+                    self.QuoteLabel.text = "\"\(currentQuote.text)\""
+                    self.AuthorLabel.text = "-\(currentQuote.author)"
+                    favQuote.quoteText = "\"\(currentQuote.text)\""
+                    favQuote.authorName = "-\(currentQuote.author)"
                     self.activityIndicator.stopAnimating()
                     }
                 }
@@ -84,10 +84,10 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
             debugPrint("Found \(randomQuotes.count) quotes stored. Get Random Quote")
             let index = Int.random(in: 0...(randomQuotes.count - 1))
             let currentQuote = randomQuotes[index]
-            QuoteLabel.text = currentQuote.text
-            AuthorLabel.text = currentQuote.author
-            favQuote.quoteText = currentQuote.text
-            favQuote.authorName = currentQuote.author
+            QuoteLabel.text = "\"\(currentQuote.text)\""
+            AuthorLabel.text = "-\(currentQuote.author)"
+            favQuote.quoteText = "\"\(currentQuote.text)\""
+            favQuote.authorName = "-\(currentQuote.author)"
             activityIndicator.stopAnimating()
         }
     }

@@ -51,15 +51,13 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")!
         if fetchedResultsController?.fetchedObjects?.isEmpty == false {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")
             let currentQuote = fetchedResultsController?.fetchedObjects?[indexPath.row]
-            cell?.textLabel?.text = currentQuote?.quoteText
-            cell?.detailTextLabel?.text = currentQuote?.authorName
-            return cell
-        } else {
-            return
-        }
+            cell.textLabel?.text = "\"\(currentQuote?.quoteText ?? "")\""
+            cell.detailTextLabel?.text = "\"\(currentQuote?.authorName ?? "")\""
+            }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,11 +69,13 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            tableView.beginUpdates()
             let quoteToDelete = (fetchedResultsController?.object(at: indexPath))! as NSManagedObject
             dataController.viewContext.delete(quoteToDelete)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
+            tableView.endUpdates()
         }
+        tableView.reloadData()
         try? dataController.viewContext.save()
     }
     
