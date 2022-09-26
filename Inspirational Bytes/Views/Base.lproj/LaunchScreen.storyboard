@@ -18,26 +18,24 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nebula" id="XLK-ta-aBb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Now Loading" textAlignment="center" minimumFontSize="17" id="7B4-Dz-x5F">
-                                <rect key="frame" x="0.0" y="377" width="414" height="432"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="50"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Inpirational Bytes " textAlignment="center" minimumFontSize="17" id="eok-pw-qPA">
-                                <rect key="frame" x="0.0" y="90" width="414" height="461"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Inpirational Bytes " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eok-pw-qPA">
+                                <rect key="frame" x="15" y="233" width="384" height="86"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="461" id="hHT-JR-A5q"/>
+                                    <constraint firstAttribute="height" constant="86" id="hnK-ll-FVI"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="50"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Now Loading" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7B4-Dz-x5F">
+                                <rect key="frame" x="58" y="575" width="299" height="63"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -45,23 +43,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-44" id="7Dr-Fi-YeV"/>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CYD-rw-DMe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7B4-Dz-x5F" secondAttribute="trailing" constant="10" id="Ek8-LR-Slf"/>
-                            <constraint firstItem="eok-pw-qPA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KN5-hz-Yb4"/>
-                            <constraint firstItem="7B4-Dz-x5F" firstAttribute="top" secondItem="eok-pw-qPA" secondAttribute="bottom" constant="10" id="TPg-Dt-jpY"/>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZFO-n0-kNM"/>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="trailing" secondItem="eok-pw-qPA" secondAttribute="trailing" id="gbt-vk-Nr0"/>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hDP-3W-O3y"/>
-                            <constraint firstItem="XLK-ta-aBb" firstAttribute="leading" secondItem="eok-pw-qPA" secondAttribute="leading" id="hxt-OT-OPQ"/>
-                            <constraint firstItem="7B4-Dz-x5F" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-30" id="o5J-Nb-g6y"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="7B4-Dz-x5F" secondAttribute="bottom" constant="-85" id="ocn-Jq-O29"/>
+                            <constraint firstItem="eok-pw-qPA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Sc9-2a-UUD"/>
+                            <constraint firstItem="eok-pw-qPA" firstAttribute="centerX" secondItem="XLK-ta-aBb" secondAttribute="centerX" id="Vdh-Gy-sc2"/>
+                            <constraint firstItem="7B4-Dz-x5F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="58" id="ceh-sN-yOf"/>
+                            <constraint firstItem="eok-pw-qPA" firstAttribute="centerX" secondItem="7B4-Dz-x5F" secondAttribute="centerX" id="mrB-cC-8UG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7B4-Dz-x5F" secondAttribute="bottom" constant="224" id="umq-9Y-s1g"/>
+                            <constraint firstItem="eok-pw-qPA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="189" id="wOx-Uv-1P9"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="50.724637681159422" y="373.66071428571428"/>
         </scene>
     </scenes>
     <resources>

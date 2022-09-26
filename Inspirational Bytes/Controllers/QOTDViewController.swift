@@ -42,15 +42,20 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     override func viewDidLoad() {
-        favButton.isEnabled = true
-        shareButton.isEnabled = true
         activityIndicator.startAnimating()
         super.viewDidLoad()
-        setQOTD()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.setQOTD()
+        }
     }
     
     func setQOTD () {
         NetworkManager.getQOTD() { quoteResponse, error in
+            guard error == nil else {
+                self.activityIndicator.stopAnimating()
+                self.showError(message: error!.localizedDescription)
+                return
+            }
             if let quoteResponse = quoteResponse {
                 let responseText = quoteResponse[0]
                 self.QOTDLabel.text = "\"\(responseText.text)\""
@@ -94,6 +99,13 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         }
         present(controller, animated: true, completion: nil)
     }
+    
+    func showError(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+    }
+    
     
     @IBAction func GetQuotesButton(_ sender: UIButton) {
         print("Time to get changes")

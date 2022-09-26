@@ -69,6 +69,11 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     func setSavedQuote() {
         if randomQuotes.isEmpty == true {
             NetworkManager.getQuotes { quoteResponse, error in
+                guard error == nil else {
+                    self.activityIndicator.stopAnimating()
+                    self.showError(message: error!.localizedDescription)
+                    return
+                }
                 if let quoteResponse = quoteResponse {
                     self.randomQuotes.append(contentsOf: quoteResponse)
                     let index = Int.random(in: 0...(quoteResponse.count - 1))
@@ -78,7 +83,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     self.favQuote.quoteText = "\"\(currentQuote.text)\""
                     self.favQuote.authorName = "-\(currentQuote.author)"
                     self.activityIndicator.stopAnimating()
-                    }
+                }
+                self.activityIndicator.stopAnimating()
                 }
         } else {
             let index = Int.random(in: 0...(randomQuotes.count - 1))
@@ -98,8 +104,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     }
 
     @IBAction func backButtonPressed(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-        self.dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true)
     }
     
     func createShareQuote() -> UIImage {

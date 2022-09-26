@@ -30,9 +30,13 @@ class NetworkManager {
         }
     }
     
+    //Implement an error throw for no network response/failed download
     @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
           let task = URLSession.shared.dataTask(with: url) { data, response, error in
               guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                  DispatchQueue.main.async {
+                      completion(nil, error)
+                  }
                   return
               }
               guard let data = data else {
@@ -49,7 +53,7 @@ class NetworkManager {
                   }
               } catch {
                   do {
-                      let errorResponse = try decoder.decode([QuoteResponse].self, from: data) as! Error
+                      let errorResponse = try decoder.decode(responseType, from: data) as! Error
                       DispatchQueue.main.async {
                           completion(nil, errorResponse)
                       }
@@ -78,7 +82,8 @@ class NetworkManager {
     }
     
     class func getQOTD(completion: @escaping ([QOTDResponse]?, Error?) -> Void) {
-        NetworkManager.taskForGETRequest(url: Endpoints.QOTD.url, responseType: [QOTDResponse].self) { response, error in            if error == nil {
+        NetworkManager.taskForGETRequest(url: Endpoints.QOTD.url, responseType: [QOTDResponse].self) { response, error in
+            if error == nil {
                 DispatchQueue.main.async {
                     completion(response, nil)
                 }

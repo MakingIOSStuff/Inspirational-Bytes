@@ -11,6 +11,8 @@ import CoreData
 
 class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var favQuoteText: String = ""
     var author: String = ""
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
@@ -33,12 +35,6 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         setupFetchedResultsController()
         super.viewWillAppear(animated)
@@ -53,6 +49,8 @@ class SavedQuotesViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCells")!
         if fetchedResultsController?.fetchedObjects?.isEmpty == false {
             let currentQuote = fetchedResultsController?.fetchedObjects?[indexPath.row]
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = currentQuote?.quoteText ?? ""
             cell.detailTextLabel?.text = currentQuote?.authorName ?? ""
             }

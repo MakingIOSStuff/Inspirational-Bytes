@@ -45,6 +45,10 @@ function cannot be undone.
 
 ***
 
+# Requirements 
+** Xcode 13+
+** iOS 15+
+
 ## All quotes have been provided by ZenQuote API.
 Inspirational quotes provided by <a href="https://zenquotes.io/" target="_
 blank">ZenQuotes API</a>
