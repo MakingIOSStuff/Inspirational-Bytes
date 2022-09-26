@@ -23,6 +23,9 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
     var savedQuotes: SavedQuotes?
+    var quoteText: String = ""
+//    var quoteToDelete: implement var to pass to button for delete
+    var savedToFavs: Bool = false
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
     
@@ -44,9 +47,12 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     override func viewDidLoad() {
         activityIndicator.startAnimating()
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.setQOTD()
-        }
+        self.setQOTD()
+        setFavButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setFavButton()
     }
     
     func setQOTD () {
@@ -62,6 +68,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 self.qotdAuthorLabel.text = "-\(responseText.author)"
                 self.favQuote.quoteText = "\"\(responseText.text)\""
                 self.favQuote.authorName = "-\(responseText.author)"
+                self.quoteText = self.qotdLabel.text ?? ""
             }
             self.activityIndicator.stopAnimating()
         }
@@ -82,12 +89,40 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         return shareQuote
     }
     
+    func setFavButton() {
+        let fetchRequest:NSFetchRequest<SavedQuotes> = SavedQuotes.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "authorName", ascending: false)
+                fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController?.delegate = self
+        fetchRequest.predicate = NSPredicate(format: "quoteText = %@", "\(quoteText)")
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch {
+            debugPrint("The fetch could not be performed: \(error.localizedDescription)")
+        }
+        if fetchedResultsController?.fetchedObjects?.isEmpty == true{
+            savedToFavs = false
+            favButton.tintColor = .blue
+        } else {
+            //pass back index for delete if button is pressed
+            savedToFavs = true
+            favButton.tintColor = .systemPink
+        }
+    }
+    
     @IBAction func saveToFav(_ sender: UIButton) {
+        if savedToFavs == false {
         let quoteForSave = SavedQuotes(context: dataController.viewContext)
         quoteForSave.quoteText = favQuote.quoteText
         quoteForSave.authorName = favQuote.authorName
+        } else {
+//            dataController.viewContext.delete(quoteToDelete) FIX THE VAR
+            setupFetchedResultsController()
+        }
         try? dataController.viewContext.save()
-        favButton.isEnabled = false
+        setFavButton()
     }
     
     @IBAction func shareButton(_ sender: UIButton) {
@@ -108,7 +143,6 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     
     @IBAction func GetQuotesButton(_ sender: UIButton) {
-        print("Time to get changes")
         }
 }
 

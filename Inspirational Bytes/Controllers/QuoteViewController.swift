@@ -24,6 +24,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     var randomQuotes = [QuoteResponse]()
     var favQuoteText: String = ""
     var author: String = ""
+    var quoteText: String = ""
     var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
     var fromFavorites: Bool = false
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
@@ -82,6 +83,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     self.authorLabel.text = "-\(currentQuote.author)"
                     self.favQuote.quoteText = "\"\(currentQuote.text)\""
                     self.favQuote.authorName = "-\(currentQuote.author)"
+                    self.quoteText = self.quoteLabel.text ?? ""
                     self.activityIndicator.stopAnimating()
                 }
                 self.activityIndicator.stopAnimating()
@@ -93,6 +95,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
             authorLabel.text = "-\(currentQuote.author)"
             favQuote.quoteText = "\"\(currentQuote.text)\""
             favQuote.authorName = "-\(currentQuote.author)"
+            quoteText = self.quoteLabel.text ?? ""
             activityIndicator.stopAnimating()
         }
     }
