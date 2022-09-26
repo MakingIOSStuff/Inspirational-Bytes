@@ -15,8 +15,8 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var QOTDLabel: UILabel!
-    @IBOutlet weak var QOTDAuthorLabel: UILabel!
+    @IBOutlet weak var qotdLabel: UILabel!
+    @IBOutlet weak var qotdAuthorLabel: UILabel!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var getQuoteButton: UIButton!
@@ -58,8 +58,8 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
             }
             if let quoteResponse = quoteResponse {
                 let responseText = quoteResponse[0]
-                self.QOTDLabel.text = "\"\(responseText.text)\""
-                self.QOTDAuthorLabel.text = "-\(responseText.author)"
+                self.qotdLabel.text = "\"\(responseText.text)\""
+                self.qotdAuthorLabel.text = "-\(responseText.author)"
                 self.favQuote.quoteText = "\"\(responseText.text)\""
                 self.favQuote.authorName = "-\(responseText.author)"
             }
@@ -103,7 +103,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     func showError(message: String) {
         let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true)
     }
     
     

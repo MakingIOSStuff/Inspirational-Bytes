@@ -12,8 +12,8 @@ import CoreData
 class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var QuoteLabel: UILabel!
-    @IBOutlet weak var AuthorLabel: UILabel!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var favButton: UIBarButtonItem!
@@ -55,8 +55,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
 
     override func viewWillAppear(_ animated: Bool) {
         if fromFavorites == true {
-            QuoteLabel.text = favQuoteText
-            AuthorLabel.text = author
+            quoteLabel.text = favQuoteText
+            authorLabel.text = author
             favButton.isEnabled = false
             favButton.customView?.isHidden = true
             refreshQuoteButton.isHidden = true
@@ -78,8 +78,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     self.randomQuotes.append(contentsOf: quoteResponse)
                     let index = Int.random(in: 0...(quoteResponse.count - 1))
                     let currentQuote = quoteResponse[index]
-                    self.QuoteLabel.text = "\"\(currentQuote.text)\""
-                    self.AuthorLabel.text = "-\(currentQuote.author)"
+                    self.quoteLabel.text = "\"\(currentQuote.text)\""
+                    self.authorLabel.text = "-\(currentQuote.author)"
                     self.favQuote.quoteText = "\"\(currentQuote.text)\""
                     self.favQuote.authorName = "-\(currentQuote.author)"
                     self.activityIndicator.stopAnimating()
@@ -89,8 +89,8 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
         } else {
             let index = Int.random(in: 0...(randomQuotes.count - 1))
             let currentQuote = randomQuotes[index]
-            QuoteLabel.text = "\"\(currentQuote.text)\""
-            AuthorLabel.text = "-\(currentQuote.author)"
+            quoteLabel.text = "\"\(currentQuote.text)\""
+            authorLabel.text = "-\(currentQuote.author)"
             favQuote.quoteText = "\"\(currentQuote.text)\""
             favQuote.authorName = "-\(currentQuote.author)"
             activityIndicator.stopAnimating()
@@ -148,7 +148,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
     func showError(message: String) {
         let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true)
     }
 }
 
