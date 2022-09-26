@@ -39,6 +39,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         fetchedResultsController?.delegate = self
         do {
             try fetchedResultsController?.performFetch()
+            debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects)) and object 0 is \(String(describing: fetchedResultsController?.fetchedObjects?[0].quoteText)))")
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -48,6 +49,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         activityIndicator.startAnimating()
         super.viewDidLoad()
         self.setQOTD()
+        setupFetchedResultsController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,13 +94,13 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         let fetchRequest:NSFetchRequest<SavedQuotes> = SavedQuotes.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "authorName", ascending: false)
                 fetchRequest.sortDescriptors = [sortDescriptor]
-        
+        fetchRequest.predicate = NSPredicate(format: "quoteText = %@", "\"\(quoteText)\"")
+
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
-        fetchRequest.predicate = NSPredicate(format: "quoteText = %@", quoteText)
-        debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects))")
         do {
             try fetchedResultsController?.performFetch()
+            debugPrint("fetch for comparing: \(String(describing: fetchedResultsController?.fetchedObjects)) and is empty is: \(String(describing: fetchedResultsController?.fetchedObjects?.isEmpty))")
         } catch {
             debugPrint("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -109,6 +111,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
             //pass back index for delete if button is pressed
             savedToFavs = true
             favButton.tintColor = .systemPink
+            imageView.reloadInputViews()
         }
     }
     
