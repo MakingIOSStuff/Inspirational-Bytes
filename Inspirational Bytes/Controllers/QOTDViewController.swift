@@ -48,11 +48,9 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         activityIndicator.startAnimating()
         super.viewDidLoad()
         self.setQOTD()
-        setFavButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setFavButton()
     }
     
     func setQOTD () {
@@ -68,9 +66,10 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 self.qotdAuthorLabel.text = "-\(responseText.author)"
                 self.favQuote.quoteText = "\"\(responseText.text)\""
                 self.favQuote.authorName = "-\(responseText.author)"
-                self.quoteText = self.qotdLabel.text ?? ""
+                self.quoteText = responseText.text
             }
             self.activityIndicator.stopAnimating()
+            self.setFavButton()
         }
     }
     
@@ -96,13 +95,14 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
-        fetchRequest.predicate = NSPredicate(format: "quoteText = %@", "\(quoteText)")
+        fetchRequest.predicate = NSPredicate(format: "quoteText = %@", quoteText)
+        debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects))")
         do {
             try fetchedResultsController?.performFetch()
         } catch {
             debugPrint("The fetch could not be performed: \(error.localizedDescription)")
         }
-        if fetchedResultsController?.fetchedObjects?.isEmpty == true{
+        if fetchedResultsController?.fetchedObjects?.isEmpty == true {
             savedToFavs = false
             favButton.tintColor = .blue
         } else {

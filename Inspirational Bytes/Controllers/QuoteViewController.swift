@@ -83,7 +83,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
                     self.authorLabel.text = "-\(currentQuote.author)"
                     self.favQuote.quoteText = "\"\(currentQuote.text)\""
                     self.favQuote.authorName = "-\(currentQuote.author)"
-                    self.quoteText = self.quoteLabel.text ?? ""
+                    self.quoteText = currentQuote.text
                     self.activityIndicator.stopAnimating()
                 }
                 self.activityIndicator.stopAnimating()
@@ -95,7 +95,7 @@ class QuoteViewController: UIViewController, NSFetchedResultsControllerDelegate,
             authorLabel.text = "-\(currentQuote.author)"
             favQuote.quoteText = "\"\(currentQuote.text)\""
             favQuote.authorName = "-\(currentQuote.author)"
-            quoteText = self.quoteLabel.text ?? ""
+            quoteText = currentQuote.text
             activityIndicator.stopAnimating()
         }
     }
