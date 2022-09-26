@@ -110,7 +110,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         } else {
             //pass back index for delete if button is pressed
             savedToFavs = true
-            favButton.customView?.tintColor = .systemPink
+            favButton.customView?.tintColor = .magenta
         }
     }
     
