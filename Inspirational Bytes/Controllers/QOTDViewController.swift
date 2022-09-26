@@ -24,7 +24,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     var favQuote = favoriteQuotes(quoteText: "" , authorName: "")
     var savedQuotes: SavedQuotes?
     var quoteText: String = ""
-//    var quoteToDelete: implement var to pass to button for delete
+    var quoteToDelete: NSManagedObject!
     var savedToFavs: Bool = false
     var dataController: DataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var fetchedResultsController: NSFetchedResultsController<SavedQuotes>?
@@ -39,7 +39,6 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         fetchedResultsController?.delegate = self
         do {
             try fetchedResultsController?.performFetch()
-            debugPrint("fetch returned: \(String(describing: fetchedResultsController?.fetchedObjects)) and object 0 is \(String(describing: fetchedResultsController?.fetchedObjects?[0].quoteText)))")
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -53,6 +52,7 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setFavButton()
     }
     
     func setQOTD () {
@@ -71,7 +71,6 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 self.quoteText = responseText.text
             }
             self.activityIndicator.stopAnimating()
-            self.setFavButton()
         }
     }
     
@@ -100,15 +99,14 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         fetchedResultsController?.delegate = self
         do {
             try fetchedResultsController?.performFetch()
-            debugPrint("fetch for comparing: \(String(describing: fetchedResultsController?.fetchedObjects)) and is empty is: \(String(describing: fetchedResultsController?.fetchedObjects?.isEmpty))")
         } catch {
             debugPrint("The fetch could not be performed: \(error.localizedDescription)")
         }
         if fetchedResultsController?.fetchedObjects?.isEmpty == true {
             savedToFavs = false
-            favButton.tintColor = .blue
+            favButton.customView?.tintColor = .blue
         } else {
-            //pass back index for delete if button is pressed
+            quoteToDelete = fetchedResultsController?.fetchedObjects?[0]
             savedToFavs = true
             favButton.customView?.tintColor = .magenta
         }
@@ -116,12 +114,12 @@ class QOTDViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBAction func saveToFav(_ sender: UIButton) {
         if savedToFavs == false {
-        let quoteForSave = SavedQuotes(context: dataController.viewContext)
-        quoteForSave.quoteText = favQuote.quoteText
-        quoteForSave.authorName = favQuote.authorName
+            let quoteForSave = SavedQuotes(context: dataController.viewContext)
+            quoteForSave.quoteText = favQuote.quoteText
+            quoteForSave.authorName = favQuote.authorName
         } else {
-//            dataController.viewContext.delete(quoteToDelete) FIX THE VAR
-            setupFetchedResultsController()
+            _ = SavedQuotes(context: dataController.viewContext)
+            dataController.viewContext.delete(quoteToDelete)
         }
         try? dataController.viewContext.save()
         setFavButton()
